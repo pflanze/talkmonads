@@ -1,5 +1,5 @@
 (ns monads.cj
-  (:require clojure.test))
+  (:use div.ist))
 
 (defn compose-2 [f1 f2]
   (fn [& x]
@@ -14,9 +14,6 @@
               (list op v r))
             (first r)
             (rest r))))
-
-(defmacro ist [expr res]
-  `(clojure.test/is (= '~res ~expr)))
 
 (ist (_right-associate 'foo '(10 20 30 40))
      (foo 10 (foo 20 (foo 30 40))))
