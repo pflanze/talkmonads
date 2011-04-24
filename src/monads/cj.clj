@@ -17,14 +17,16 @@
      (monads.cj/compose-2 a (monads.cj/compose-2 b c)))
 
 
-(defn transaction:>> [a b]
+(ns monads.transaction)
+
+(defn >> [a b]
   (fn [commit cont]
     (a commit
        (fn [commit]
          (b commit
             cont)))))
 
-(defn transaction:>>= [a b]
+(defn >>= [a b]
   (fn [commit cont]
     (a commit
        (fn [commit value]
@@ -32,7 +34,7 @@
           commit
           cont)))))
 
-(defn transaction:return [val]
+(defn return [val]
   (fn [commit cont]
     (cont commit
           val)))
