@@ -29,8 +29,8 @@
      (foo 10 (foo 20 (foo 30 40))))
 (ist (_right-associate 'foo '(10 40))
      (foo 10 40))
-;; (ist (_right-associate 'foo '(40))
-;;      40) ;; hum
+(iste (_right-associate 'foo '(40))
+      (error "need at least 2 arguments"))
 
 (defmacro right-associate [op & l]
   (_right-associate op l))
