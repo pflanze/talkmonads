@@ -1,5 +1,6 @@
 (ns monads.cj
-  (:use div.ist))
+  ;;(:use div.schemey)
+   (:use div.syntaxlib))
 
 (defn compose-2 [f1 f2]
   (fn [& x]
@@ -8,32 +9,6 @@
 ;; (defmacro compose [& fs]
 ;;   )
 
-(defn error [str]
-  (throw (Exception. str)))
-
-(defn null? [x]
-  (and (list? x) ;; (coll? x)  ?
-       (not (seq x))))
-
-(defn _right-associate [op l]
-  (let [r (reverse l)
-        rst (rest r)]
-    (if (null? rst)
-      (error "need at least 2 arguments")
-      (reduce (fn [r v]
-                (list op v r))
-              (first r)
-              rst))))
-
-(ist (_right-associate 'foo '(10 20 30 40))
-     (foo 10 (foo 20 (foo 30 40))))
-(ist (_right-associate 'foo '(10 40))
-     (foo 10 40))
-(iste (_right-associate 'foo '(40))
-      (error "need at least 2 arguments"))
-
-(defmacro right-associate [op & l]
-  (_right-associate op l))
 
 
 
