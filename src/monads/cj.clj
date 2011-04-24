@@ -17,25 +17,25 @@
      (monads.cj/compose-2 a (monads.cj/compose-2 b c)))
 
 
-(ns monads.transaction)
+(ns monads.state)
 
 (defn >> [a b]
-  (fn [commit cont]
-    (a commit
-       (fn [commit]
-         (b commit
+  (fn [state cont]
+    (a state
+       (fn [state]
+         (b state
             cont)))))
 
 (defn >>= [a b]
-  (fn [commit cont]
-    (a commit
-       (fn [commit value]
+  (fn [state cont]
+    (a state
+       (fn [state value]
          ((b value)
-          commit
+          state
           cont)))))
 
 (defn return [val]
-  (fn [commit cont]
-    (cont commit
+  (fn [state cont]
+    (cont state
           val)))
 
