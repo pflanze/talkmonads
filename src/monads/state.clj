@@ -1,4 +1,7 @@
-(ns monads.state)
+(ns monads.state
+  ;;(:use monads.generic) useless since the import has to be done at
+  ;;the end user.
+  )
 
 ;; the monadic type (?) is: (state cont) -> no return (CPS), cont is
 ;; receiving the new state [[[and new cont.  NO  hm ? ]]]
