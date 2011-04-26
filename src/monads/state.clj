@@ -19,7 +19,9 @@
 ;; ç
 
 (defn >>= [a b]
-  (fn [state cont]
+                                        ;(swank.core/break)
+  (fn [state & cont]
+                                        ; (swank.core/break)
     (a state
        (fn [state value]
          ((b value)
