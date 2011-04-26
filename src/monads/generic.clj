@@ -5,9 +5,9 @@
 (defmacro mdo [& fs]
   `(right-associate ~'>> ~@fs))
 
-(defmacro mlet [v+expr & body]
-  (let [v (first v+expr) ;; better pattern matching?
-        expr (second v+expr)]
-    `(~'>>= ~expr
+(defmacro mlet [v+vexpr bexpr]
+  (let [v (first v+vexpr) ;; better pattern matching?
+        vexpr (second v+vexpr)]
+    `(~'>>= ~vexpr
             (fn [~v]
-              ~@body))))
+              ~bexpr))))
