@@ -1,13 +1,13 @@
 # monads
 
-FIXME: write description
+Example monad library, written for a presentation in Montreal
 
 ## Usage
 
-FIXME: write
+Load monad.tst
 
 ## License
 
-Copyright (C) 2010 FIXME
+Copyright (C) 2011 Christian Jaeger
 
 Distributed under the Eclipse Public License, the same as Clojure.
