@@ -3,3 +3,5 @@
   (:use monads.state)
   (:use clojure.walk))
 
+(defn tst []
+  ((>>= (state-ref) vector) 'foo ))
