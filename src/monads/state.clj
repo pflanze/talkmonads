@@ -64,11 +64,14 @@
 (defn state-ref []
   (fn [state cont]
     (depr state-ref:f state cont)
-    (cont state)))
+    (cont state
+          state)))
 
 (defn state-set [x]
   ;; with or without "!"?
+  (depr state-set x)
   (fn [state cont]
+    (depr state-set:f state cont)
     (cont x)))
 
 (defmacro minline! [expr]
