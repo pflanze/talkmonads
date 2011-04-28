@@ -45,7 +45,7 @@
 
 (defn >>= [a b]
   (depr >>= a b)
-  (fn [state & cont]
+  (fn [state cont]
     (depr >>=:f state cont)
     (a state
        (fn [state value]
