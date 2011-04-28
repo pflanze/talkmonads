@@ -71,3 +71,9 @@
   (fn [state cont]
     (cont x)))
 
+(defmacro minline! [expr]
+  (let [state (gensym)
+        cont (gensym)]
+    `(fn [~state ~cont]
+       ~expr ;; could be done with thunks instead of a macro, of course..
+       (~cont ~state))))
